@@ -28,3 +28,7 @@ jar {
         attributes 'Main-Class': application.mainClass
     }
 }
+
+javadoc {
+    destinationDir = new File("doc/javadoc")
+}
