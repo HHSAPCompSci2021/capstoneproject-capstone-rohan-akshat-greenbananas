@@ -32,3 +32,7 @@ jar {
 javadoc {
     destinationDir = new File("doc/javadoc")
 }
+
+shadowJar {
+    destinationDir = new File("dist/")
+}
