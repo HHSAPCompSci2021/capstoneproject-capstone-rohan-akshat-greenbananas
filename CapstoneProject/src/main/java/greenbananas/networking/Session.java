@@ -20,7 +20,6 @@ public class Session {
 
     private final FirebaseDatabase db;
     private String sessionId;
-    private boolean sessionIsCreated;
     private boolean isSessionClosed = false;
 
     /**
@@ -60,7 +59,6 @@ public class Session {
         sessionId = UUID.randomUUID().toString().replace("-", "");
         DatabaseReference sessionRef = db.getReference("/sessions/" + sessionId);
         sessionRef.setValue(SessionSnapshot.getEmptySnapshot(), ((error, ref) -> {
-            sessionIsCreated = true;
             ref.addValueEventListener(new GameSessionListener());
         }));
     }

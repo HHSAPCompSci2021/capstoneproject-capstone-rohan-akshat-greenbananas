@@ -7,7 +7,9 @@ import net.glxn.qrgen.javase.QRCode;
 import java.io.File;
 
 /**
- * Represents the current state of the game
+ * Represents the current state of the game.
+ * This class is a singleton as the same GameContext 
+ * has to be shared between classes
  */
 public class GameContext {
     private boolean isConnected;
@@ -16,8 +18,14 @@ public class GameContext {
     private Session gameSession;
     private static GameContext instance;
 
+    // private constructor so getInstance has to be used
     private GameContext() {}
 
+    /**
+     * Returns the current GameContext.
+     * If one does not exist, a new GameContext is created.
+     * @return the current GameContext.
+     */
     public static GameContext getInstance() {
         if(instance == null) {
             instance = new GameContext();

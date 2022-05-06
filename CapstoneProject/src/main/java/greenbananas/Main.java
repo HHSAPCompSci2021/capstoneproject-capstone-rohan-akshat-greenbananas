@@ -10,7 +10,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowStateListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -23,16 +22,6 @@ public class Main {
             PSurfaceAWT surf = (PSurfaceAWT) drawing.getSurface();
             PSurfaceAWT.SmoothCanvas canvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
             JFrame window = (JFrame)canvas.getFrame();
-            
-            window.addWindowStateListener(new WindowStateListener() {
-
-                @Override
-                public void windowStateChanged(WindowEvent e) {
-                    // TODO Auto-generated method stub
-                
-                    
-                }});
-
             window.setSize(500, 500);
             window.setMinimumSize(new Dimension(100,100));
             window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

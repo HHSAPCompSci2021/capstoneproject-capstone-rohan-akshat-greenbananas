@@ -8,7 +8,6 @@ public class SessionSnapshot {
      * Orientation data
      */
     public int orientation;
-//    public int alpha, beta, gamma;
     /**
      * Is the client connected?
      */
@@ -28,9 +27,6 @@ public class SessionSnapshot {
      */
     public static SessionSnapshot getEmptySnapshot() {
         SessionSnapshot snapshot = new SessionSnapshot();
-//        snapshot.alpha = -1;
-//        snapshot.beta = -1;
-//        snapshot.gamma = -1;
         snapshot.orientation = -1;
         snapshot.isClientConnected = false;
         return snapshot;
