@@ -11,9 +11,11 @@ public class DrawingSurface extends PApplet {
     PImage qrcode = null;
 
     GameContext context;
+    Blocks [] blocks;
 
     public DrawingSurface() {
         context = GameContext.getInstance();
+        blocks=new Blocks[Blocks.numOfBlocks];
     }
 
     // The statements in the setup() function
