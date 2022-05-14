@@ -7,8 +7,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import greenbananas.game.GameContext;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.UUID;
 
 /**
@@ -27,9 +27,11 @@ public class Session {
      * @throws IOException if credential file is not found and/or cannot be opened
      */
     private void initFirebase() throws IOException {
-        FileInputStream credentials = new FileInputStream("assets/firebase.json");
+        // System.out.println(filePath);
+        // FileInputStream credentials = new FileInputStream("src/main/java/greenbananas/firebase.json");
+        InputStream s =  this.getClass().getClassLoader().getResourceAsStream("firebase.json");
         FirebaseOptions options = FirebaseOptions.builder()
-                .setCredentials(GoogleCredentials.fromStream(credentials))
+                .setCredentials(GoogleCredentials.fromStream(s))
                 .setDatabaseUrl("https://balance-it-hhs-default-rtdb.firebaseio.com")
                 .build();
 
