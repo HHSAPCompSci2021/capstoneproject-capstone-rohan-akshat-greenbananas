@@ -1,35 +1,46 @@
 package greenbananas.game.physics;
 import processing.core.PApplet;
-import akshat.shapes.Line;
-import akshat.shapes.Rectangle;
 import akshat.shapes.Shape;
 
-public abstract class PhysicsShape {
-
-	private Shape s;
-	
+/**
+ * Represents a shape with physics
+ */
+public abstract class PhysicsShape {	
 	private double vx = 1, vy = 0;
 	private double ax, ay;
 	
-	public PhysicsShape(Shape s) {
-		this.s = s;
+	public PhysicsShape() {
 		ay = PhysicsConstants.A_GRAVITY;
 		ax = 0.00;
 	}
 	
+	/**
+	 * Draws the shape
+	 * @param surface The surface on which to draw the shape
+	 */
 	public void draw(PApplet surface) {
 		// getEnclosingRectangle().draw(surface);
-		s.draw(surface);
+		getShape().draw(surface);
 	}
 	
-	public abstract Rectangle getEnclosingRectangle();
-	
+	/**
+	 * Gets called frequently, and updates to the shape are processed here
+	 * @param surface The surface on which the shapes are drawn
+	 */
 	public abstract void act(PApplet surface);
 	
+	/**
+	 * Returns the magnitute of the velocity vector of the current shape
+	 * @return The magnitute of the velocity vector of the current shape
+	 */
 	public double getVelocityMagnitude() {
 		return Math.sqrt((vx * vx) + (vy * vy));
 	}
 	
+	/**
+	 * Returns the angle from the horizontal of the shapes current velocity
+	 * @return The angle from the horizontal of the shapes current velocity
+	 */
 	public double getHeadingAngle() {
 		if(Math.abs(getVelocityMagnitude()) <= 0.001) {
 			return 0;
@@ -47,30 +58,39 @@ public abstract class PhysicsShape {
 		return theta;
 	}
 	
+	/**
+	 * Returns the velocity vector of the shape
+	 * @return The velocity vector of the shape
+	 */
 	public double[] getVelocityVector() {
 		return new double[] {vx, vy};
 	}
 	
+	/**
+	 * Returns the acceleration vector of the shape
+	 * @return The acceleration vector of the shape
+	 */
 	public double[] getAccelerationVector() {
 		return new double[] {ax, ay};
 	}
 	
+	/**
+	 * Sets the velocity of the shape
+	 * @param vx The x component of the velocity
+	 * @param vy The y component of the velocity
+	 */
 	public void setVelocity(double vx, double vy) {
 		this.vy = vy;
 		this.vx = vx;
 	}
 
-	public boolean isPointInside(int mouseX, int mouseY) {
-		return s.isPointInside(mouseX, mouseY);
-	}
-	
 	public String toString() {
-		return s.toString() + "\t" + getEnclosingRectangle().toString() + "\n";
+		return getShape().toString() + "\t" + getShape().getEnclosingRect().toString() + "\n";
 	}
 	
-	public Line[] getEnclosingLines() {
-		Rectangle r = getEnclosingRectangle();
-		return r.getEnclosingLines();
-	}
-	
+    /**
+	 * Returns the shape the Physics shape represents
+	 * @return The shape the Physics shape represents
+	 */
+	public abstract Shape getShape();
 }

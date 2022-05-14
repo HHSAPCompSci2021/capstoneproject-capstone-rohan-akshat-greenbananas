@@ -2,20 +2,22 @@ package greenbananas.game.physics;
 
 import akshat.shapes.Line;
 import akshat.shapes.Rectangle;
+import akshat.shapes.Shape;
 import processing.core.PApplet;
 
+/**
+ * Represents a line with physics
+ */
 public class PhysicsLine extends PhysicsShape {
 
     private final Line l;
 
+    /**
+	 * Constructs a new PhysicsLine based on the given line
+	 * @param l The line
+	 */
     public PhysicsLine(Line l) {
-        super(l);
         this.l = l;
-    }
-
-    @Override
-    public Rectangle getEnclosingRectangle() {
-        return new Rectangle(l.getX(), l.getY(), (l.getX2() - l.getX()), (l.getY2() - l.getY()));
     }
 
     @Override
@@ -23,10 +25,20 @@ public class PhysicsLine extends PhysicsShape {
         return;
     }
 
+    /**
+     * Calculates the angle the line makes with the horizontal
+     * @return The angle the line makes with the horizontal
+     */
     public double getAngle() {
         return Math.atan((l.getY() - l.getY2()) /( l.getX2() - l.getX()));
     }
 
+    /**
+     * Calculates the resultant velocity vector of an object colliding with the line
+     * @param vx The x component of the initial velocity of the object
+     * @param vy The y component of the initial velocity of the object
+     * @return An array, in [x,y] order, of the resulting velocity of a collision
+     */
     public double[] getNormalVelocityVector(double vx, double vy) {
         double velocity = Math.sqrt((vx * vx) + (vy * vy));
         double theta = getAngle();
@@ -35,22 +47,13 @@ public class PhysicsLine extends PhysicsShape {
         return new double[] {normalX, normalY};
     }
     
-    public boolean intersects(PhysicsShape s) {
-    	for(Line l2 : s.getEnclosingLines()) {
-    		if(l.intersects(l2)) {
-    			return true;
-    		}
-    	}
-    	return false;
-    }
-
-    public Line getLine() {
-        return l;
-    }
-
+    /**
+     * Checks if given shapes collide with the line, and apply collision physics if they do
+     * @param shapes The shapes
+     */
     public void checkCollisions(PhysicsShape... shapes) {
         for(PhysicsShape s : shapes) {
-            if(intersects(s)) {
+            if(l.intersects(s.getShape())) {
                 double[] currVelocity = s.getVelocityVector();
                 double[] newVelocity = getNormalVelocityVector(currVelocity[0], currVelocity[1]);
                 s.setVelocity(newVelocity[0], newVelocity[1]);
@@ -58,8 +61,8 @@ public class PhysicsLine extends PhysicsShape {
         }
     }
 
-    public void setPoint2(double x, double y) {
-        l.setPoint2(x, y);
+    @Override
+    public Shape getShape() {
+        return l;
     }
-    
 }

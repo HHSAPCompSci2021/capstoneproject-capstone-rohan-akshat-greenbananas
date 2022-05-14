@@ -1,21 +1,22 @@
 package greenbananas.game.physics;
 
-import akshat.shapes.Line;
 import akshat.shapes.Rectangle;
+import akshat.shapes.Shape;
 import processing.core.PApplet;
 
+/**
+ * Represents a rectangle with physics
+ */
 public class PhysicsRectangle extends PhysicsShape {
 	private final Rectangle r;
 	private int framesSinceLastHitY;
 
+	/**
+	 * Constructs a new PhysicsRectangle based on the given rectangle
+	 * @param r The rectangle
+	 */
 	public PhysicsRectangle(Rectangle r) {
-		super(r);
 		this.r = r;
-	}
-
-	@Override
-	public Rectangle getEnclosingRectangle() {
-		return r;
 	}
 
 	@Override
@@ -78,5 +79,10 @@ public class PhysicsRectangle extends PhysicsShape {
 		}
 		framesSinceLastHitY++;
 		setVelocity(vx, vy);
+	}
+
+	@Override
+	public Shape getShape() {
+		return r;
 	}
 }

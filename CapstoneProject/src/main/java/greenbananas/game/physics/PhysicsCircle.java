@@ -1,28 +1,28 @@
 package greenbananas.game.physics;
 import akshat.shapes.Circle;
 import akshat.shapes.Rectangle;
+import akshat.shapes.Shape;
 import processing.core.PApplet;
 
+/**
+ * Represents a circle with physics
+ */
 public class PhysicsCircle extends PhysicsShape {
 	private final Circle c;
 	
 	private int framesSinceLastHitY = 0;
 	
+	/**
+	 * Constructs a new PhysicsCircle based on the given circle
+	 * @param c The circle
+	 */
 	public PhysicsCircle(Circle c) {
-		super(c);
 		this.c = c;
-	}
-
-	@Override
-	public Rectangle getEnclosingRectangle() {
-		double rectX = c.getX() - c.getRadius();
-		double rectY = c.getY() - c.getRadius();
-		return new Rectangle(rectX, rectY, c.getRadius() * 2, c.getRadius() * 2);
 	}
 	
 	@Override
 	public void act(PApplet surface) {
-		Rectangle r = getEnclosingRectangle();
+		Rectangle r = c.getEnclosingRect();
 		
 		double[] acceleration = getAccelerationVector();
 		double ax = acceleration[0];
@@ -85,5 +85,10 @@ public class PhysicsCircle extends PhysicsShape {
 		
 		framesSinceLastHitY++;
 		setVelocity(vx, vy);
+	}
+
+	@Override
+	public Shape getShape() {
+		return c;
 	}
 }

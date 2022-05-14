@@ -1,16 +1,16 @@
 package greenbananas.game.level;
 
 import akshat.shapes.Line;
-//import akshat.shapes.Shape;
 import greenbananas.game.BalanceBeam;
-import greenbananas.game.physics.PhysicsCircle;
 import greenbananas.game.physics.PhysicsLine;
 import processing.core.PApplet;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * Represents a sample level
+ */
 public class SampleLevel extends Level {
 
     private static ArrayList<PhysicsLine> lines;
