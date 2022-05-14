@@ -1,5 +1,6 @@
 package greenbananas.game;
 
+import greenbananas.game.level.SampleLevel;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -11,6 +12,7 @@ public class DrawingSurface extends PApplet {
     PImage qrcode = null;
 
     GameContext context;
+    SampleLevel l = new SampleLevel();
     Blocks [] blocks;
 
     public DrawingSurface() {
@@ -24,6 +26,7 @@ public class DrawingSurface extends PApplet {
         stroke(0);
         textSize(12);
         fill(0);
+
     }
 
     // The statements in draw() are executed until the
@@ -38,7 +41,7 @@ public class DrawingSurface extends PApplet {
             }
             image(qrcode, 0, 0, width, height);
         } else {
-            text(context.getDeviceOrientation() + "",0,15);
+            l.draw(this);
         }
     }
 
