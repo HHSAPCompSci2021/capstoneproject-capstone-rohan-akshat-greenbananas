@@ -35,6 +35,7 @@ public class DrawingSurface extends PApplet {
     // line is executed again.
     public void draw() {
         background(255);   // Clear the screen with a white background
+        
         if(context.getQrcode() != null && !context.isConnected()) {
             if(qrcode == null) {
                 qrcode = loadImage(context.getQrcode());
