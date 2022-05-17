@@ -1,5 +1,5 @@
 package greenbananas.game;
-
+import shapes
 public class Blocks {
 
 	public static int numOfBlocks;

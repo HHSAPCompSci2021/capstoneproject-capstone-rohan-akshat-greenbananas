@@ -1,4 +1,4 @@
-package greenbananas.game;
+package greenbananas.game.level;
 
 import java.util.ArrayList;
 
