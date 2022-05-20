@@ -6,7 +6,7 @@ import akshat.shapes.Shape;
  * Represents a shape with physics
  */
 public abstract class PhysicsShape {	
-	private double vx = 1, vy = 0;
+	private double vx = 0, vy = 0;
 	private double ax, ay;
 	
 	public PhysicsShape() {

@@ -53,10 +53,18 @@ public class PhysicsLine extends PhysicsShape {
      */
     public void checkCollisions(PhysicsShape... shapes) {
         for(PhysicsShape s : shapes) {
-            if(l.intersects(s.getShape())) {
-                double[] currVelocity = s.getVelocityVector();
-                double[] newVelocity = getNormalVelocityVector(currVelocity[0], currVelocity[1]);
-                s.setVelocity(newVelocity[0], newVelocity[1]);
+            // if(l.intersects(s.getShape())) {
+                // double[] currVelocity = s.getVelocityVector();
+                // double[] newVelocity = getNormalVelocityVector(currVelocity[0], currVelocity[1]);
+                // s.setVelocity(newVelocity[0], newVelocity[1]);
+            // }
+            for(Line line : s.getShape().getEnclosingLines()) {
+                if(l.intersects(line)) {
+                    double[] currVelocity = s.getVelocityVector();
+                    double[] newVelocity = getNormalVelocityVector(currVelocity[0], currVelocity[1]);
+                    s.setVelocity(newVelocity[0], newVelocity[1]);
+                    break;
+                }
             }
         }
     }

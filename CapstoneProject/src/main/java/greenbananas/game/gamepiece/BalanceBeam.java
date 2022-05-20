@@ -1,7 +1,8 @@
-package greenbananas.game;
+package greenbananas.game.gamepiece;
 
 import akshat.shapes.Line;
 import greenbananas.game.physics.PhysicsLine;
+import greenbananas.game.physics.PhysicsShape;
 import processing.core.PApplet;
 
 import java.awt.geom.Point2D.Double;
@@ -59,6 +60,14 @@ public class BalanceBeam {
         surface.ellipse((float) center.x, (float) center.y, 3, 3);
         for(PhysicsLine l : lines) {
             l.draw(surface);
+        }
+    }
+
+    public void checkCollisions(List<GamePiece> gamePieces) {
+        for(PhysicsLine l : lines) {
+            for(GamePiece gamePiece : gamePieces) {
+                l.checkCollisions(gamePiece.getShape());
+            }
         }
     }
 }
