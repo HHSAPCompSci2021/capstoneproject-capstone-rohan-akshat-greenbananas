@@ -21,15 +21,6 @@ public class Hopper {
     }
 
     public void act(List<GamePiece> gamePieces) {
-        // for(GamePiece gamePiece : gamePieces) {
-            // if(r.intersects(gamePiece.getShape().getShape())) {
-            //     if(gamePiece.getColor().equals(color)) {
-            //         context.getLevel().incrementPoint();
-            //     } else {
-            //         context.getLevel().gameOver();
-            //     }
-            // }
-        // }
         for(int i = 0; i < gamePieces.size(); i++) {
             GamePiece gamePiece = gamePieces.get(i);
             if(r.intersects(gamePiece.getShape().getShape())) {

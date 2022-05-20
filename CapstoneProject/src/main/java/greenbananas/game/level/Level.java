@@ -21,7 +21,7 @@ public abstract class Level {
     /**
      * Constructs a new Level object
      * @param balanceBeam the balance bean
-     * @param gamePieces the game peices
+     * @param gamePieces the game pieces
      */
     protected Level() {
         context = GameContext.getInstance();
@@ -43,10 +43,6 @@ public abstract class Level {
         balanceBeam.setAngle(context.getDeviceOrientation());
         balanceBeam.checkCollisions(gamePieces);
         balanceBeam.draw(surface);
-        // for(GamePiece gamePiece : gamePieces) {
-        //     gamePiece.act(surface);
-        //     gamePiece.draw(surface);
-        // }
         for(int i = 0; i < gamePieces.size(); i++) {
             GamePiece gamePiece = gamePieces.get(i);
             if(gamePiece.act(surface)) {
@@ -66,9 +62,12 @@ public abstract class Level {
         }
     }
 
-    public abstract void reset();
-
-    public abstract void init();
+    public void reset() {
+    	gamePieces.clear();
+        for(Generator generator : generators) {
+            generator.reset();
+        }
+    }
 
     public List<GamePiece> getGamePieces() {
         return gamePieces;
