@@ -1,4 +1,4 @@
-tmr package greenbananas.screens;
+package greenbananas.screens;
 
 import processing.core.PApplet;
 
