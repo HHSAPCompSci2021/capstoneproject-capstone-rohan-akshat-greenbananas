@@ -74,6 +74,7 @@ public class GameContext {
      */
     public void setSession(Session session) {
         gameSession = session;
+        System.out.println(getConnectionURL());
         File qrcodeFile = QRCode.from(getConnectionURL()).to(ImageType.PNG).withSize(500,500).file("qrcode");
         qrcode =  qrcodeFile.getAbsolutePath();
     }

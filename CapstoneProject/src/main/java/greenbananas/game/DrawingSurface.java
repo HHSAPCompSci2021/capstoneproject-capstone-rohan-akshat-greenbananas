@@ -1,6 +1,6 @@
 package greenbananas.game;
 
-import greenbananas.game.level.SampleLevel;
+import greenbananas.game.level.*;
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.event.KeyEvent;
@@ -13,7 +13,7 @@ public class DrawingSurface extends PApplet {
     PImage qrcode = null;
 
     GameContext context;
-    SampleLevel l = new SampleLevel();
+    Level l = new Level2();
     // Blocks [] blocks;
 
     public DrawingSurface() {

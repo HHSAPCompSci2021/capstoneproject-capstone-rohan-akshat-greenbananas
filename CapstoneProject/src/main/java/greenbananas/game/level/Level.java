@@ -40,9 +40,18 @@ public abstract class Level {
         balanceBeam.setAngle(context.getDeviceOrientation());
         balanceBeam.checkCollisions(gamePieces);
         balanceBeam.draw(surface);
-        for(GamePiece gamePiece : gamePieces) {
-            gamePiece.act(surface);
-            gamePiece.draw(surface);
+        // for(GamePiece gamePiece : gamePieces) {
+        //     gamePiece.act(surface);
+        //     gamePiece.draw(surface);
+        // }
+        for(int i = 0; i < gamePieces.size(); i++) {
+            GamePiece gamePiece = gamePieces.get(i);
+            if(gamePiece.act(surface)) {
+                gamePieces.remove(i--);
+                gameOver();
+            } else {
+                gamePiece.draw(surface);
+            }
         }
         for(Generator generator : generators) {
             generator.act(gamePieces);
@@ -66,5 +75,6 @@ public abstract class Level {
 
     public void gameOver() {
         System.out.println("game over");
+        reset();
     }
 }
