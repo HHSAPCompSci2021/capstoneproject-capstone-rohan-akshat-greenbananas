@@ -12,10 +12,10 @@ import processing.core.PApplet;
  * Represents a Level. Each level has a balancing bean, which gets updated values through the GameContext.
  */
 public abstract class Level {
-    private final BalanceBeam balanceBeam;
-    private final List<GamePiece> gamePieces;
-    private final List<Generator> generators;
-    private final List<Hopper> hoppers;
+    private BalanceBeam balanceBeam;
+    private List<GamePiece> gamePieces;
+    private List<Generator> generators;
+    private List<Hopper> hoppers;
     private final GameContext context;
 
     /**
@@ -23,12 +23,15 @@ public abstract class Level {
      * @param balanceBeam the balance bean
      * @param gamePieces the game peices
      */
-    protected Level(BalanceBeam balanceBeam, List<GamePiece> gamePieces, List<Generator> generators, List<Hopper> hoppers) {
+    protected Level() {
+        context = GameContext.getInstance();
+    }
+
+    protected void setup(BalanceBeam balanceBeam, List<GamePiece> gamePieces, List<Generator> generators, List<Hopper> hoppers) {
         this.balanceBeam = balanceBeam;
         this.gamePieces = gamePieces;
         this.generators = generators;
         this.hoppers = hoppers;
-        context = GameContext.getInstance();
     }
 
     /**
@@ -64,6 +67,8 @@ public abstract class Level {
     }
 
     public abstract void reset();
+
+    public abstract void init();
 
     public List<GamePiece> getGamePieces() {
         return gamePieces;

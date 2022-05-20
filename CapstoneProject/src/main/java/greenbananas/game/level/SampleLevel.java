@@ -38,7 +38,7 @@ public class SampleLevel extends Level {
     }
 
     public SampleLevel() {
-        super(new BalanceBeam(new Point2D.Double(250, 250), lines), gamePieces, generators, hoppers);
+        setup(new BalanceBeam(new Point2D.Double(250, 250), lines), gamePieces, generators, hoppers);
     }
 
     @Override
@@ -56,5 +56,11 @@ public class SampleLevel extends Level {
         generators.clear();
         generators.add(new Generator(150, 20, 90, 5, new Color[] {Color.RED, Color.BLUE}, ColorMode.SEQUENTIAL));
         generators.add(new Generator(300, 20, 90, 5, new Color[] {Color.RED, Color.BLUE}, ColorMode.SEQUENTIAL));
+    }
+
+    @Override
+    public void init() {
+        // TODO Auto-generated method stub
+        
     }
 }
