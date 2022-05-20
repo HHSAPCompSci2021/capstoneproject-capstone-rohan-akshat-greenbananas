@@ -2,6 +2,7 @@ package greenbananas.game.gamepiece;
 import java.util.List;
 
 import akshat.shapes.Rectangle;
+import javafx.geometry.Point2D;
 import processing.core.PApplet;
 import java.awt.Color;
 import java.awt.geom.Point2D.Double;
@@ -24,7 +25,7 @@ public class Generator {
         this.colors = colors;
         currentFrame = 0;
         generatedCount = 0;
-        rectangle = new Rectangle(x - GENERATOR_WIDTH / 2, y - GENERATOR_WIDTH / 2, GENERATOR_WIDTH, GENERATOR_WIDTH);
+        rectangle = new Rectangle(x, y, GENERATOR_WIDTH, GENERATOR_WIDTH);
     }
 
     public void act(List<GamePiece> gamePieces) {
@@ -50,7 +51,8 @@ public class Generator {
                 selectedIndex = 0;
                 break;
         }
-        gamePieces.add(new GamePiece(rectangle.getX(), rectangle.getY(), 20, colors[selectedIndex]));
+        Double center = rectangle.getCenter();
+        gamePieces.add(new GamePiece(center.x, center.y, 20, colors[selectedIndex]));
     }
 
     public void draw(PApplet surface) {
