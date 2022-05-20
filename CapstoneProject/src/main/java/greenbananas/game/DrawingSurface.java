@@ -4,6 +4,8 @@ import greenbananas.game.level.SampleLevel;
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.event.KeyEvent;
+import java.util.ArrayList;
+import greenbananas.screens.Screens;
 
 
 /**
@@ -11,6 +13,10 @@ import processing.event.KeyEvent;
  */
 public class DrawingSurface extends PApplet {
     PImage qrcode = null;
+
+    private ArrayList<Screens> screens;
+    private Screens current;
+
 
     GameContext context;
     SampleLevel l = new SampleLevel();
@@ -20,6 +26,9 @@ public class DrawingSurface extends PApplet {
         context = GameContext.getInstance();
         context.setLevel(l);
         // blocks=new Blocks[Blocks.numOfBlocks];
+
+        //add levels here into screens arraylsit
+
     }
 
     // The statements in the setup() function
@@ -55,6 +64,10 @@ public class DrawingSurface extends PApplet {
         } else {
             l.draw(this);
         }
+    }
+
+    public void switchScreens(int i){
+        current=screens.get(i);
     }
 
 }
