@@ -19,7 +19,8 @@ application {
 dependencies {
     implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
     implementation 'com.google.firebase:firebase-admin:8.1.0'
-    implementation 'org.processing:core:3.3.7'
+    // implementation 'org.processing:core:3.0'
+    implementation files('lib/processing_core.jar')
     implementation 'com.github.kenglxn.QRGen:javase:2.6.0'
     implementation files('lib/shapes.jar')
 }

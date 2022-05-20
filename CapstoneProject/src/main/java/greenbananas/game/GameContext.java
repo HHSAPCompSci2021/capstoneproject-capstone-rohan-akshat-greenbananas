@@ -1,5 +1,6 @@
 package greenbananas.game;
 
+import greenbananas.game.level.Level;
 import greenbananas.networking.Session;
 import net.glxn.qrgen.core.image.ImageType;
 import net.glxn.qrgen.javase.QRCode;
@@ -16,6 +17,8 @@ public class GameContext {
     private int deviceOrientation;
     private String qrcode;
     private Session gameSession;
+    private Level currentLevel;
+
     private static GameContext instance;
 
     // private constructor so getInstance has to be used
@@ -98,5 +101,13 @@ public class GameContext {
      */
     public Session getSession() {
         return gameSession;
+    }
+
+    public Level getLevel() {
+        return currentLevel;
+    }
+
+    public void setLevel(Level l) {
+        currentLevel = l;
     }
 }

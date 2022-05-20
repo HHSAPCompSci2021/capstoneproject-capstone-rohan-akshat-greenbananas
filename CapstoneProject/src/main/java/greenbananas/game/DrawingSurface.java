@@ -3,6 +3,7 @@ package greenbananas.game;
 import greenbananas.game.level.SampleLevel;
 import processing.core.PApplet;
 import processing.core.PImage;
+import processing.event.KeyEvent;
 
 
 /**
@@ -13,11 +14,12 @@ public class DrawingSurface extends PApplet {
 
     GameContext context;
     SampleLevel l = new SampleLevel();
-    Blocks [] blocks;
+    // Blocks [] blocks;
 
     public DrawingSurface() {
         context = GameContext.getInstance();
-        blocks=new Blocks[Blocks.numOfBlocks];
+        context.setLevel(l);
+        // blocks=new Blocks[Blocks.numOfBlocks];
     }
 
     // The statements in the setup() function
@@ -27,6 +29,13 @@ public class DrawingSurface extends PApplet {
         textSize(12);
         fill(0);
 
+    }
+
+    @Override
+    public void keyPressed(KeyEvent event) {
+        if(event.getKey() == 'r') {
+            l.reset();
+        }
     }
 
     // The statements in draw() are executed until the
@@ -41,6 +50,8 @@ public class DrawingSurface extends PApplet {
                 qrcode = loadImage(context.getQrcode());
             }
             image(qrcode, 0, 0, width, height);
+
+            
         } else {
             l.draw(this);
         }
