@@ -12,23 +12,26 @@ import processing.core.PApplet;
  * Represents a Level. Each level has a balancing bean, which gets updated values through the GameContext.
  */
 public abstract class Level {
-    private final BalanceBeam balanceBeam;
-    private final List<GamePiece> gamePieces;
-    private final List<Generator> generators;
-    private final List<Hopper> hoppers;
+    private BalanceBeam balanceBeam;
+    private List<GamePiece> gamePieces;
+    private List<Generator> generators;
+    private List<Hopper> hoppers;
     private final GameContext context;
 
     /**
      * Constructs a new Level object
      * @param balanceBeam the balance bean
-     * @param gamePieces the game peices
+     * @param gamePieces the game pieces
      */
-    protected Level(BalanceBeam balanceBeam, List<GamePiece> gamePieces, List<Generator> generators, List<Hopper> hoppers) {
+    protected Level() {
+        context = GameContext.getInstance();
+    }
+
+    protected void setup(BalanceBeam balanceBeam, List<GamePiece> gamePieces, List<Generator> generators, List<Hopper> hoppers) {
         this.balanceBeam = balanceBeam;
         this.gamePieces = gamePieces;
         this.generators = generators;
         this.hoppers = hoppers;
-        context = GameContext.getInstance();
     }
 
     /**
@@ -40,10 +43,6 @@ public abstract class Level {
         balanceBeam.setAngle(context.getDeviceOrientation());
         balanceBeam.checkCollisions(gamePieces);
         balanceBeam.draw(surface);
-        // for(GamePiece gamePiece : gamePieces) {
-        //     gamePiece.act(surface);
-        //     gamePiece.draw(surface);
-        // }
         for(int i = 0; i < gamePieces.size(); i++) {
             GamePiece gamePiece = gamePieces.get(i);
             if(gamePiece.act(surface)) {
@@ -63,7 +62,12 @@ public abstract class Level {
         }
     }
 
-    public abstract void reset();
+    public void reset() {
+    	gamePieces.clear();
+        for(Generator generator : generators) {
+            generator.reset();
+        }
+    }
 
     public List<GamePiece> getGamePieces() {
         return gamePieces;

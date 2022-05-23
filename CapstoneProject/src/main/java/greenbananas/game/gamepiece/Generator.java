@@ -2,7 +2,6 @@ package greenbananas.game.gamepiece;
 import java.util.List;
 
 import akshat.shapes.Rectangle;
-import javafx.geometry.Point2D;
 import processing.core.PApplet;
 import java.awt.Color;
 import java.awt.geom.Point2D.Double;
@@ -59,6 +58,11 @@ public class Generator {
         rectangle.draw(surface);
         Double center = rectangle.getCenter();
         surface.text('G', (float) center.x, (float) center.y);
+    }
+
+    public void reset() {
+        generatedCount = 0;
+        currentFrame = 0;
     }
 
     public enum ColorMode {

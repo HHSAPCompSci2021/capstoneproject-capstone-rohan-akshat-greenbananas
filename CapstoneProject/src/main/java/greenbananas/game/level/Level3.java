@@ -16,20 +16,20 @@ import java.util.ArrayList;
 /**
  * Represents a sample level
  */
-public class Level2 extends Level {
+public class Level3 extends Level {
 
-    public Level2() {
+    public Level3() {
     	BalanceBeam balanceBeam;
 	    ArrayList<PhysicsLine> lines = new ArrayList<>();
 	    ArrayList<GamePiece> gamePieces = new ArrayList<>();
 	    ArrayList<Generator> generators = new ArrayList<>();
 	    ArrayList<Hopper> hoppers = new ArrayList<>();
 	    
-        lines.add(new PhysicsLine(new Line(112, 162, 388, 162)));
-        balanceBeam = new BalanceBeam(new Point2D.Double(250, 162), lines);
-        generators.add(new Generator(230, 20, 120, 5, new Color[] {Color.RED, Color.BLUE}, ColorMode.SEQUENTIAL));
-        hoppers.add(new Hopper(16, 306, Color.RED));
-        hoppers.add(new Hopper(388, 306, Color.BLUE));
+        lines.add(new PhysicsLine(new Line(159, 198, 410, 198)));
+        lines.add(new PhysicsLine(new Line(410, 36, 410, 198)));
+        balanceBeam = new BalanceBeam(new Point2D.Double(410, 198), lines);
+        generators.add(new Generator(230, 20, 120, 5, new Color[] {Color.RED}, ColorMode.SINGLE));
+        hoppers.add(new Hopper(93, 279, Color.RED));
         setup(balanceBeam, gamePieces, generators, hoppers);
     }
 }

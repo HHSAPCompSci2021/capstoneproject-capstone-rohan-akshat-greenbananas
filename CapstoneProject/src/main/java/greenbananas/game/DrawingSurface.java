@@ -19,7 +19,7 @@ public class DrawingSurface extends PApplet {
 
 
     GameContext context;
-    Level l = new Level2();
+    Level l = new Level3();
     // Blocks [] blocks;
 
     public DrawingSurface() {
