@@ -79,9 +79,17 @@ public class Generator {
      * @param surface The surface on which to draw the Generator
      */
     public void draw(PApplet surface) {
+        if(colorMode == ColorMode.SEQUENTIAL) {
+            rectangle.setFillColor(colors[generatedCount % colors.length]);
+        }
+        if(generatedCount >= maxGenerations) {
+            rectangle.setFillColor(Color.GRAY);
+        }
         rectangle.draw(surface);
-        Double center = rectangle.getCenter();
-        surface.text('G', (float) center.x, (float) center.y);
+        surface.textSize(17.5f);
+        surface.fill(0);
+
+        surface.text(maxGenerations - generatedCount, (float) rectangle.getX() + 5, (float) (rectangle.getY() + rectangle.getHeight() - 2));
     }
 
     /**
