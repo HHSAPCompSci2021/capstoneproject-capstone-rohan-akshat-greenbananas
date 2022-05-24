@@ -1,5 +1,9 @@
 package greenbananas.game.level;
+import greenbananas.game.DrawingSurface;
+
 import java.util.List;
+
+import com.google.cloud.firestore.collection.LLRBNode.Color;
 
 import greenbananas.game.GameContext;
 import greenbananas.game.gamepiece.BalanceBeam;
@@ -7,6 +11,8 @@ import greenbananas.game.gamepiece.GamePiece;
 import greenbananas.game.gamepiece.Generator;
 import greenbananas.game.gamepiece.Hopper;
 import processing.core.PApplet;
+import akshat.shapes.Rectangle;
+import processing.event.MouseEvent;
 
 /**
  * Represents a Level. Each level has a balancing bean, which gets updated values through the GameContext.
@@ -18,11 +24,14 @@ public abstract class Level {
     private List<Hopper> hoppers;
     private final GameContext context;
 
+    private Rectangle levelSelectBtn;
+
     /**
      * Constructs a new Level object
      */
     protected Level() {
         context = GameContext.getInstance();
+        levelSelectBtn = new Rectangle(10, 10,87, 25);
     }
 
     /**
@@ -48,6 +57,12 @@ public abstract class Level {
         balanceBeam.setAngle(context.getDeviceOrientation());
         balanceBeam.checkCollisions(gamePieces);
         balanceBeam.draw(surface);
+        levelSelectBtn.draw(surface);
+        surface.fill(0);
+        surface.textSize(10);
+        
+       
+        surface.text("BACK TO MENU", 15,20);
         for(int i = 0; i < gamePieces.size(); i++) {
             GamePiece gamePiece = gamePieces.get(i);
             if(gamePiece.act(surface)) {
@@ -98,5 +113,12 @@ public abstract class Level {
     public void gameOver() {
         System.out.println("game over");
         reset();
+    }
+
+    public void mouseClick(MouseEvent e, DrawingSurface surface) {
+        if(levelSelectBtn.isPointInside(e.getX(), e.getY())) {
+            surface.showMenu();
+            System.out.println("showing menu");
+        }
     }
 }

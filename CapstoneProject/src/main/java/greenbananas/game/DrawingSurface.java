@@ -6,6 +6,7 @@ import processing.core.PImage;
 import processing.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
+import processing.event.MouseEvent;
 
 import greenbananas.screens.MainScreen;
 import greenbananas.screens.Screens;
@@ -26,8 +27,9 @@ public class DrawingSurface extends PApplet {
     Level l1=new Level1();
     Level l2 = new Level2();
     Level l3=new Level3();
+    Level l4=new Level4();
     MainScreen m=new MainScreen();
-    private ArrayList<Level> screens=new ArrayList<>(Arrays.asList(l1,l2,l3));
+    private ArrayList<Level> screens=new ArrayList<>(Arrays.asList(l1,l2,l3,l4));
     // Blocks [] blocks;
 
     public DrawingSurface() {
@@ -60,22 +62,22 @@ public class DrawingSurface extends PApplet {
     // sequence and after the last line is read, the first
     // line is executed again.
     public void draw() {
-        background(255);   // Clear the screen with a white background
-        m.draw(this);
-        if(current!=null){
-        current.draw(this);
-        }
-        // if(context.getQrcode() != null && !context.isConnected()) {
-        //     if(qrcode == null) {
-        //         qrcode = loadImage(context.getQrcode());
-        //     }
-        //     image(qrcode, 0, 0, width, height);
+        
+        if(context.getQrcode() != null && !context.isConnected()) {
+            if(qrcode == null) {
+                qrcode = loadImage(context.getQrcode());
+            }
+            image(qrcode, 0, 0, width, height);
 
             
-        // } else {
-          
+        } else {
+            background(255);   // Clear the screen with a white background
+            m.draw(this);
+            if(current!=null){
+            current.draw(this);
+            }
             
-        // }
+        }
     }
 
     public void switchScreens(int i){
@@ -83,7 +85,14 @@ public class DrawingSurface extends PApplet {
     }
 
     public void mousePressed(){
-        System.out.println("h2332i");
+        
+    }
+
+    public void mousePressed(MouseEvent e) {
+        if(current != null) {
+            current.mouseClick(e, this);
+        } else {
+          
         if(mouseX>43&&mouseX<200&&mouseY>100&&mouseY<240){
             switchScreens(1);
             System.out.println("hi");
@@ -96,13 +105,16 @@ public class DrawingSurface extends PApplet {
             switchScreens(3);
             System.out.println("hi3");
         }
-        else if(mouseX>253&&mouseX<453&&mouseY>100&&mouseY<240){
+        else if(mouseX>253&&mouseX<453&&mouseY>300&&mouseY<440){
             switchScreens(4);
             System.out.println("hi4");
         }
+        }
     }
 
-
+    public void showMenu() {
+        current = null;
+    }
 }
 
 

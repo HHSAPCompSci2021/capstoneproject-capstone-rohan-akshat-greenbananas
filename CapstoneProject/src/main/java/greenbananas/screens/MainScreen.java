@@ -25,17 +25,27 @@ public class MainScreen {
 		
 		
 		for(int i=0; i<2; i++) {
+			drawer.fill(255);
 			drawer.rectMode(PApplet.CORNER);
 			menu.add(new Screens(i*210+43, 300, 200, 140));
 			drawer.rect(i*210+43, 300, 200, 140);
+			int x=i+3;
+		drawer.fill(0);
+		drawer.textSize(35);
+		drawer.text("LEVEL "+x,i*210+75, 400);
 			
 		}
 		for(int i=0; i<2; i++) {
+			drawer.fill(255);
 			drawer.rectMode(PApplet.CORNER);
 			menu.add(new Screens(i*210+43, 100, 200, 140));
 
 			drawer.rect(i*210+43, 100, 200, 140);
-		}
+		int x=i+1;
+		drawer.fill(0);
+		drawer.textSize(40);
+		drawer.text("LEVEL "+x,i*210+75, 200);
+		 }
 		
 	}
 
