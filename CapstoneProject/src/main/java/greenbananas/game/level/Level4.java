@@ -13,7 +13,7 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 /**
- * Represents a sample level
+ * Represents a level 4
  */
 public class Level4 extends Level {
 
