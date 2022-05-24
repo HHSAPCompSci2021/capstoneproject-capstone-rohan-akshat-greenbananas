@@ -3,8 +3,6 @@ import greenbananas.game.DrawingSurface;
 
 import java.util.List;
 
-import com.google.cloud.firestore.collection.LLRBNode.Color;
-
 import greenbananas.game.GameContext;
 import greenbananas.game.gamepiece.BalanceBeam;
 import greenbananas.game.gamepiece.GamePiece;
