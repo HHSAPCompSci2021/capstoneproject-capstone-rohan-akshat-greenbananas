@@ -1,7 +1,7 @@
 package greenbananas.screens;
 import java.util.ArrayList;
 import processing.core.PApplet;
-import greenbananas.screens.Screens;
+import greenbananas.screens.*;
 public class MainScreen {
 	
 
