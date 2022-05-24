@@ -1,18 +1,15 @@
 package greenbananas.screens;
-
-import java.util.ArrayList;
 import processing.core.PApplet;
-public class MainScreen {
 
-	public static ArrayList<Screen> menu = new ArrayList<>();
-	// types:
-	/*
-	 * Type 0 is level screen
-	 * Type 1 is game screen
-	 * Type 2 is main screen
+/**
+ * Represents the level selection menu
+ */
+public class Menu {
+	/**
+	 * Draws the menu
+	 * @param drawer The PApplet to draw the menu on
 	 */
-
-	public void draw(PApplet drawer) {
+	 public void draw(PApplet drawer) {
 		drawer.background(255);
 		drawer.stroke(0);
 		drawer.textSize(12);
@@ -24,7 +21,7 @@ public class MainScreen {
 		for (int i = 0; i < 2; i++) {
 			drawer.fill(255);
 			drawer.rectMode(PApplet.CORNER);
-			menu.add(new Screen(i * 210 + 43, 300, 200, 140));
+
 			drawer.rect(i * 210 + 43, 300, 200, 140);
 			int x = i + 3;
 			drawer.fill(0);
@@ -35,7 +32,6 @@ public class MainScreen {
 		for (int i = 0; i < 2; i++) {
 			drawer.fill(255);
 			drawer.rectMode(PApplet.CORNER);
-			menu.add(new Screen(i * 210 + 43, 100, 200, 140));
 
 			drawer.rect(i * 210 + 43, 100, 200, 140);
 			int x = i + 1;
@@ -45,9 +41,4 @@ public class MainScreen {
 		}
 
 	}
-
-	// public void mousePressed(){
-	// if()
-	// }
-
 }

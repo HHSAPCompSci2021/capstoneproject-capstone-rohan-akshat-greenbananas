@@ -4,6 +4,7 @@ import akshat.shapes.Line;
 import greenbananas.game.physics.PhysicsLine;
 import processing.core.PApplet;
 
+import java.awt.Color;
 import java.awt.geom.Point2D.Double;
 import java.util.List;
 
@@ -25,6 +26,10 @@ public class BalanceBeam {
     public BalanceBeam(Double center, List<PhysicsLine> lines) {
         this.center = center;
         this.lines = lines;
+        for(PhysicsLine l : lines) {
+            l.getShape().setFillColor(Color.BLACK);
+            l.getShape().setStrokeColor(Color.BLACK);
+        }
         angle = 0;
     }
 

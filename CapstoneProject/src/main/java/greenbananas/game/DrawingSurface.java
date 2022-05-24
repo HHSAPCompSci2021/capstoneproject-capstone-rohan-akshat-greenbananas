@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import processing.event.MouseEvent;
 
-import greenbananas.screens.MainScreen;
+import greenbananas.screens.Menu;
 
 
 /**
@@ -27,7 +27,7 @@ public class DrawingSurface extends PApplet {
     Level l2 = new Level2();
     Level l3=new Level3();
     Level l4=new Level4();
-    MainScreen m=new MainScreen();
+    Menu m=new Menu();
     private ArrayList<Level> screens=new ArrayList<>(Arrays.asList(l1,l2,l3,l4));
     // Blocks [] blocks;
 
