@@ -12,6 +12,9 @@ public class GameSessionListener implements ValueEventListener {
 
     private final GameContext context;
 
+    /**
+     * Constructs a new GameSessionListener object
+     */
     public GameSessionListener() {
         context = GameContext.getInstance();
     }

@@ -58,7 +58,8 @@ public class Session {
      * Creates a new session.
      */
     private void generateSession() {
-        sessionId = UUID.randomUUID().toString().replace("-", "");
+        // sessionId = UUID.randomUUID().toString().replace("-", "");
+        sessionId = "test";
         DatabaseReference sessionRef = db.getReference("/sessions/" + sessionId);
         sessionRef.setValue(SessionSnapshot.getEmptySnapshot(), ((error, ref) -> {
             ref.addValueEventListener(new GameSessionListener());
@@ -84,7 +85,11 @@ public class Session {
     public String getSessionId() {
         return sessionId;
     }
-    
+
+    /**
+     * Checks if the current session is closed
+     * @return True of the current session is closed
+     */
     public boolean hasSessionClosed() {
     	return isSessionClosed;
     }

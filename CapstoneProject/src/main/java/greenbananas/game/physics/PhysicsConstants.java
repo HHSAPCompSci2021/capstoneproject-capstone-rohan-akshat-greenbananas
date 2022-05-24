@@ -17,5 +17,5 @@ public class PhysicsConstants {
 	 /**
 	 * The percent the velocity should be reduced upon collisions
 	 */
-	public static final double K_DAMPING = 0.6;
+	public static final double K_DAMPING = 0.75;
 }

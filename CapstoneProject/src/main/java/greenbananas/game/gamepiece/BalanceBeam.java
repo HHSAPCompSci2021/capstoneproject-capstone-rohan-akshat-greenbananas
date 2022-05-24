@@ -2,7 +2,6 @@ package greenbananas.game.gamepiece;
 
 import akshat.shapes.Line;
 import greenbananas.game.physics.PhysicsLine;
-import greenbananas.game.physics.PhysicsShape;
 import processing.core.PApplet;
 
 import java.awt.geom.Point2D.Double;
@@ -13,8 +12,9 @@ import java.util.List;
  * This is the part that the user controls through the phones rotation
  */
 public class BalanceBeam {
-    private Double center;
-    private List<PhysicsLine> lines;
+    private final Double center;
+    private final List<PhysicsLine> lines;
+
     private double angle;
 
     /**
@@ -63,6 +63,11 @@ public class BalanceBeam {
         }
     }
 
+    /**
+     * Checks of the given gamePieces collide with the lines of the BalanceBeam.
+     * If a gamePiece collides with the BalanceBeam, the relevant physics are applied
+     * @param gamePieces The list of GamePieces, as maintained by the current {@link greenbananas.game.level.Level}
+     */
     public void checkCollisions(List<GamePiece> gamePieces) {
         for(PhysicsLine l : lines) {
             for(GamePiece gamePiece : gamePieces) {

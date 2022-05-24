@@ -20,13 +20,18 @@ public abstract class Level {
 
     /**
      * Constructs a new Level object
-     * @param balanceBeam the balance bean
-     * @param gamePieces the game pieces
      */
     protected Level() {
         context = GameContext.getInstance();
     }
 
+    /**
+     * Sets up the level with the apporopirate game elements
+     * @param balanceBeam The balance beam
+     * @param gamePieces The list of gamepieces
+     * @param generators The list of generators
+     * @param hoppers The list of hoppers
+     */
     protected void setup(BalanceBeam balanceBeam, List<GamePiece> gamePieces, List<Generator> generators, List<Hopper> hoppers) {
         this.balanceBeam = balanceBeam;
         this.gamePieces = gamePieces;
@@ -62,6 +67,9 @@ public abstract class Level {
         }
     }
 
+    /**
+     * Resets the level
+     */
     public void reset() {
     	gamePieces.clear();
         for(Generator generator : generators) {
@@ -69,14 +77,24 @@ public abstract class Level {
         }
     }
 
+    /**
+     * Returns the current levels gamepieces
+     * @return The current levels gamepieces
+     */
     public List<GamePiece> getGamePieces() {
         return gamePieces;
     }
 
+    /**
+     * Increments this level's points
+     */
     public void incrementPoint() {
         System.out.println("increment points");
     }
 
+    /**
+     * Ends the current level and resets the game
+     */
     public void gameOver() {
         System.out.println("game over");
         reset();

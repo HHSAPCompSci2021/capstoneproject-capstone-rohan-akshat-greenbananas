@@ -1,7 +1,6 @@
 package greenbananas.game.physics;
 
 import akshat.shapes.Line;
-import akshat.shapes.Rectangle;
 import akshat.shapes.Shape;
 import processing.core.PApplet;
 
@@ -40,7 +39,7 @@ public class PhysicsLine extends PhysicsShape {
      * @return An array, in [x,y] order, of the resulting velocity of a collision
      */
     public double[] getNormalVelocityVector(double vx, double vy) {
-        double velocity = Math.sqrt((vx * vx) + (vy * vy));
+        double velocity = Math.sqrt((vx * vx) + (vy * vy)) * PhysicsConstants.K_DAMPING;
         double theta = getAngle();
         double normalX =  -velocity * Math.sin(theta);
         double normalY =  -velocity * Math.cos(theta);
@@ -60,6 +59,7 @@ public class PhysicsLine extends PhysicsShape {
             // }
             for(Line line : s.getShape().getEnclosingLines()) {
                 if(l.intersects(line)) {
+                    // s.getShape().setY(line.getIntersectionY(l) - 25);
                     double[] currVelocity = s.getVelocityVector();
                     double[] newVelocity = getNormalVelocityVector(currVelocity[0], currVelocity[1]);
                     s.setVelocity(newVelocity[0], newVelocity[1]);

@@ -28,7 +28,7 @@ public class Level3 extends Level {
         lines.add(new PhysicsLine(new Line(159, 198, 410, 198)));
         lines.add(new PhysicsLine(new Line(410, 36, 410, 198)));
         balanceBeam = new BalanceBeam(new Point2D.Double(410, 198), lines);
-        generators.add(new Generator(230, 20, 120, 5, new Color[] {Color.RED}, ColorMode.SINGLE));
+        generators.add(new Generator(230, 20, 120, 5, new Color[] {Color.RED, Color.BLUE}, ColorMode.SEQUENTIAL));
         hoppers.add(new Hopper(93, 279, Color.RED));
         setup(balanceBeam, gamePieces, generators, hoppers);
     }

@@ -2,11 +2,13 @@ package greenbananas.game.gamepiece;
 import java.awt.Color;
 
 import akshat.shapes.Circle;
-import greenbananas.game.GameContext;
 import greenbananas.game.physics.PhysicsCircle;
 import greenbananas.game.physics.PhysicsShape;
 import processing.core.PApplet;
 
+/**
+ * Represents a GamePiece.
+ */
 public class GamePiece {
     private PhysicsCircle c;
     private Color color;
