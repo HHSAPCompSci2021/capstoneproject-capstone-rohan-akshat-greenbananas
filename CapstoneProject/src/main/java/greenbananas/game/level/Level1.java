@@ -7,7 +7,6 @@ import greenbananas.game.gamepiece.GamePiece;
 import greenbananas.game.gamepiece.Generator;
 import greenbananas.game.gamepiece.Hopper;
 import greenbananas.game.gamepiece.Generator.ColorMode;
-import processing.core.PApplet;
 import java.awt.Color;
 
 import java.awt.geom.Point2D;

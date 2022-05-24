@@ -15,21 +15,20 @@ import java.util.ArrayList;
 /**
  * Represents a sample level
  */
-public class Level3 extends Level {
+public class Level4 extends Level {
 
-    public Level3() {
+    public Level4() {
     	BalanceBeam balanceBeam;
 	    ArrayList<PhysicsLine> lines = new ArrayList<>();
 	    ArrayList<GamePiece> gamePieces = new ArrayList<>();
 	    ArrayList<Generator> generators = new ArrayList<>();
 	    ArrayList<Hopper> hoppers = new ArrayList<>();
 	    
-        lines.add(new PhysicsLine(new Line(135, 198, 410, 198)));
-        // lines.add(new PhysicsLine(new Line(410, 36, 410, 198)));
-        balanceBeam = new BalanceBeam(new Point2D.Double(410, 198), lines);
-        generators.add(new Generator(230, 20, 120, 10, new Color[] {Color.RED, Color.BLUE}, ColorMode.SEQUENTIAL));
-        hoppers.add(new Hopper(93, 179, Color.BLUE));
-        hoppers.add(new Hopper(93, 279, Color.RED));
+        lines.add(new PhysicsLine(new Line(112, 162, 388, 162)));
+        balanceBeam = new BalanceBeam(new Point2D.Double(300, 162), lines);
+        generators.add(new Generator(230, 20, 120, 5, new Color[] {Color.RED, Color.BLUE}, ColorMode.SEQUENTIAL));
+        hoppers.add(new Hopper(16, 306, Color.RED));
+        hoppers.add(new Hopper(388, 306, Color.BLUE));
         setup(balanceBeam, gamePieces, generators, hoppers);
     }
 }
