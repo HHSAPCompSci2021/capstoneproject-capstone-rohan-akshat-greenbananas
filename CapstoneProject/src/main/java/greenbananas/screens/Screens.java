@@ -1,5 +1,7 @@
 package greenbananas.screens;
 
+import processing.core.PApplet;
+
 public class Screens {
     private int type;
     private int number;
@@ -27,5 +29,6 @@ public class Screens {
     public int getY(){
         return y;
     }
+
 
 }

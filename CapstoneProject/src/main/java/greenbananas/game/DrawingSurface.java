@@ -5,6 +5,9 @@ import processing.core.PApplet;
 import processing.core.PImage;
 import processing.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import greenbananas.screens.MainScreen;
 import greenbananas.screens.Screens;
 
 
@@ -14,17 +17,22 @@ import greenbananas.screens.Screens;
 public class DrawingSurface extends PApplet {
     PImage qrcode = null;
 
-    private ArrayList<Screens> screens;
-    private Screens current;
+    
+    private Level current;
+    
 
 
     GameContext context;
-    Level l = new Level2();
+    Level l1=new Level1();
+    Level l2 = new Level2();
+    Level l3=new Level3();
+    MainScreen m=new MainScreen();
+    private ArrayList<Level> screens=new ArrayList<>(Arrays.asList(l1,l2,l3));
     // Blocks [] blocks;
 
     public DrawingSurface() {
         context = GameContext.getInstance();
-        context.setLevel(l);
+        context.setLevel(l1);
         // blocks=new Blocks[Blocks.numOfBlocks];
 
         //add levels here into screens arraylsit
@@ -43,7 +51,7 @@ public class DrawingSurface extends PApplet {
     @Override
     public void keyPressed(KeyEvent event) {
         if(event.getKey() == 'r') {
-            l.reset();
+            l1.reset();
         }
     }
 
@@ -53,22 +61,47 @@ public class DrawingSurface extends PApplet {
     // line is executed again.
     public void draw() {
         background(255);   // Clear the screen with a white background
-        
-        if(context.getQrcode() != null && !context.isConnected()) {
-            if(qrcode == null) {
-                qrcode = loadImage(context.getQrcode());
-            }
-            image(qrcode, 0, 0, width, height);
+        m.draw(this);
+        if(current!=null){
+        current.draw(this);
+        }
+        // if(context.getQrcode() != null && !context.isConnected()) {
+        //     if(qrcode == null) {
+        //         qrcode = loadImage(context.getQrcode());
+        //     }
+        //     image(qrcode, 0, 0, width, height);
 
             
-        } else {
-            l.draw(this);
-        }
+        // } else {
+          
+            
+        // }
     }
 
     public void switchScreens(int i){
-        current=screens.get(i);
+        current=screens.get(i-1);
     }
+
+    public void mousePressed(){
+        System.out.println("h2332i");
+        if(mouseX>43&&mouseX<200&&mouseY>100&&mouseY<240){
+            switchScreens(1);
+            System.out.println("hi");
+        }
+        else if(mouseX>253&&mouseX<453&&mouseY>100&mouseY<240){
+            switchScreens(2);
+            System.out.println("hi2");
+        }
+        else if(mouseX>43&&mouseX<200&&mouseY>300&&mouseY<440){
+            switchScreens(3);
+            System.out.println("hi3");
+        }
+        else if(mouseX>253&&mouseX<453&&mouseY>100&&mouseY<240){
+            switchScreens(4);
+            System.out.println("hi4");
+        }
+    }
+
 
 }
 

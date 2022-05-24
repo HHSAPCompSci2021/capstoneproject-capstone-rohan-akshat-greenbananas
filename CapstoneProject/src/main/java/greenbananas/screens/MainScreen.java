@@ -2,16 +2,10 @@ package greenbananas.screens;
 import java.util.ArrayList;
 import processing.core.PApplet;
 import greenbananas.screens.Screens;
-public class MainScreen extends PApplet {
+public class MainScreen {
 	
 
-	private ArrayList<Screens> menu=new ArrayList<>();
-
-	public void setup() {
-		stroke(0);
-		textSize(12);
-		fill(0);
-	}
+	public static ArrayList<Screens> menu=new ArrayList<>();
 	//types:
 	/*
 	Type 0 is level screen
@@ -21,18 +15,26 @@ public class MainScreen extends PApplet {
 	
 
 	public void draw(PApplet drawer) {
-		background(255);
+		drawer.background(255);
+		drawer.stroke(0);
+		drawer.textSize(12);
+		drawer.fill(0);
 		
-		for(int i=0; i<4; i++) {
+		drawer.textSize(40);
+		drawer.text("LEVEL SELECTION", 80, 38);
+		
+		
+		for(int i=0; i<2; i++) {
 			drawer.rectMode(PApplet.CORNER);
-			menu.add(new Screens(0,1,i*30,20));
-			drawer.rect(i*30, 20, 20, 20);
+			menu.add(new Screens(i*210+43, 300, 200, 140));
+			drawer.rect(i*210+43, 300, 200, 140);
+			
 		}
-		for(int i=0; i<4; i++) {
+		for(int i=0; i<2; i++) {
 			drawer.rectMode(PApplet.CORNER);
-			menu.add(new Screens(0,1,i*30,50));
+			menu.add(new Screens(i*210+43, 100, 200, 140));
 
-			drawer.rect(i*30, 50, 20, 20);
+			drawer.rect(i*210+43, 100, 200, 140);
 		}
 		
 	}
