@@ -111,14 +111,15 @@ public abstract class Level {
      * Ends the current level and resets the game
      */
     public void gameOver() {
-        System.out.println("game over");
+        
         reset();
     }
 
     public void mouseClick(MouseEvent e, DrawingSurface surface) {
         if(levelSelectBtn.isPointInside(e.getX(), e.getY())) {
+            reset();
             surface.showMenu();
-            System.out.println("showing menu");
+          
         }
     }
 }

@@ -95,19 +95,19 @@ public class DrawingSurface extends PApplet {
           
         if(mouseX>43&&mouseX<200&&mouseY>100&&mouseY<240){
             switchScreens(1);
-            System.out.println("hi");
+            
         }
         else if(mouseX>253&&mouseX<453&&mouseY>100&mouseY<240){
             switchScreens(2);
-            System.out.println("hi2");
+           
         }
         else if(mouseX>43&&mouseX<200&&mouseY>300&&mouseY<440){
             switchScreens(3);
-            System.out.println("hi3");
+         
         }
         else if(mouseX>253&&mouseX<453&&mouseY>300&&mouseY<440){
             switchScreens(4);
-            System.out.println("hi4");
+          
         }
         }
     }

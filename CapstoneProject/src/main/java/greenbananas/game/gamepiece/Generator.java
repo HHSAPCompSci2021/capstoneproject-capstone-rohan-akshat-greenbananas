@@ -81,6 +81,8 @@ public class Generator {
     public void draw(PApplet surface) {
         if(colorMode == ColorMode.SEQUENTIAL) {
             rectangle.setFillColor(colors[generatedCount % colors.length]);
+        } else if(colorMode == ColorMode.SINGLE) {
+            rectangle.setFillColor(colors[0]);
         }
         if(generatedCount >= maxGenerations) {
             rectangle.setFillColor(Color.GRAY);
