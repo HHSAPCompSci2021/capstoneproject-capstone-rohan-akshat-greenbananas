@@ -7,14 +7,13 @@ import greenbananas.game.gamepiece.GamePiece;
 import greenbananas.game.gamepiece.Generator;
 import greenbananas.game.gamepiece.Hopper;
 import greenbananas.game.gamepiece.Generator.ColorMode;
-import processing.core.PApplet;
 import java.awt.Color;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 /**
- * Represents a sample level
+ * Represents a level 3
  */
 public class Level3 extends Level {
 
@@ -25,10 +24,11 @@ public class Level3 extends Level {
 	    ArrayList<Generator> generators = new ArrayList<>();
 	    ArrayList<Hopper> hoppers = new ArrayList<>();
 	    
-        lines.add(new PhysicsLine(new Line(159, 198, 410, 198)));
-        lines.add(new PhysicsLine(new Line(410, 36, 410, 198)));
+        lines.add(new PhysicsLine(new Line(135, 198, 410, 198)));
+        // lines.add(new PhysicsLine(new Line(410, 36, 410, 198)));
         balanceBeam = new BalanceBeam(new Point2D.Double(410, 198), lines);
-        generators.add(new Generator(230, 20, 120, 5, new Color[] {Color.RED, Color.BLUE}, ColorMode.SEQUENTIAL));
+        generators.add(new Generator(230, 20, 120, 10, new Color[] {Color.RED, Color.BLUE}, ColorMode.SEQUENTIAL));
+        hoppers.add(new Hopper(93, 179, Color.BLUE));
         hoppers.add(new Hopper(93, 279, Color.RED));
         setup(balanceBeam, gamePieces, generators, hoppers);
     }

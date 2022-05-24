@@ -58,8 +58,7 @@ public class Session {
      * Creates a new session.
      */
     private void generateSession() {
-        // sessionId = UUID.randomUUID().toString().replace("-", "");
-        sessionId = "test";
+        sessionId = UUID.randomUUID().toString().replace("-", "");
         DatabaseReference sessionRef = db.getReference("/sessions/" + sessionId);
         sessionRef.setValue(SessionSnapshot.getEmptySnapshot(), ((error, ref) -> {
             ref.addValueEventListener(new GameSessionListener());
