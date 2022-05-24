@@ -9,7 +9,6 @@ import java.util.Arrays;
 import processing.event.MouseEvent;
 
 import greenbananas.screens.MainScreen;
-import greenbananas.screens.Screens;
 
 
 /**
@@ -74,7 +73,7 @@ public class DrawingSurface extends PApplet {
             background(255);   // Clear the screen with a white background
             m.draw(this);
             if(current!=null){
-            current.draw(this);
+                current.draw(this);
             }
             
         }
@@ -82,6 +81,7 @@ public class DrawingSurface extends PApplet {
 
     public void switchScreens(int i){
         current=screens.get(i-1);
+        GameContext.getInstance().setLevel(current);
     }
 
     public void mousePressed(){
