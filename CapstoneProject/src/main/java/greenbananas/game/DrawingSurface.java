@@ -52,7 +52,7 @@ public class DrawingSurface extends PApplet {
     @Override
     public void keyPressed(KeyEvent event) {
         if(event.getKey() == 'r') {
-            l1.reset();
+            current.reset();
         }
     }
 
