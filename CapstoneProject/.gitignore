@@ -1,1 +1,6 @@
-/bin/
+.gradle
+/build
+.DS_Store
+/.settings
+/.idea
+/bin

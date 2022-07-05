@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+group 'greenbananas'
+version '1.2-RELEASE'
+
+repositories {
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+}
+
+application {
+    mainClass = 'greenbananas.Main'
+}
+
+dependencies {
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+    implementation 'com.google.firebase:firebase-admin:8.1.0'
+    implementation 'com.github.kenglxn.QRGen:javase:2.6.0'
+    implementation files('lib/shapes.jar')
+    implementation files('lib/processing_core.jar')
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': application.mainClass
+    }
+}
+
+javadoc {
+    destinationDir = new File("doc/javadoc")
+    options.tags = ["post:cm:Postcondition", "pre:cm:Precondition"]
+}
+
+shadowJar {
+    destinationDirectory = new File("dist/")
+}
